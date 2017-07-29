@@ -1,6 +1,6 @@
 package io.tradeledger.invoice;
 
-public class FeeRule1 extends InvoiceFeeCalculator implements FeeCalculator {
+public class FeeRule1 extends InvoiceFeeCalculator {
     private final float standardDiscountRate = 4.0F;
     private final int standardDiscountDays = 28;
     private final float additionalDiscountRate = 1.0F;
