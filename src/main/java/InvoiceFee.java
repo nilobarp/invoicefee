@@ -1,3 +1,4 @@
+import io.tradeledger.invoice.FeeCalculator;
 import io.tradeledger.invoice.FeeRule1;
 import io.tradeledger.invoice.FeeRule2;
 
@@ -18,16 +19,17 @@ public class InvoiceFee {
             invoiceDurationDays = Integer.parseInt(args[1]);
             ruleNumber = Integer.parseInt(args[2]);
 
+            FeeCalculator calculator;
             float invoiceFee = 0;
 
             switch (ruleNumber) {
                 case 1:
-                    FeeRule1 feeRule1 = new FeeRule1(invoiceAmount, invoiceDurationDays);
-                    invoiceFee = feeRule1.totalFee();
+                    calculator = new FeeRule1(invoiceAmount, invoiceDurationDays);
+                    invoiceFee = calculator.totalFee();
                     break;
                 case 2:
-                    FeeRule2 feeRule2 = new FeeRule2(invoiceAmount, invoiceDurationDays);
-                    invoiceFee = feeRule2.totalFee();
+                    calculator = new FeeRule2(invoiceAmount, invoiceDurationDays);
+                    invoiceFee = calculator.totalFee();
             }
 
             System.out.println("Total invoice fee: " + invoiceFee);
